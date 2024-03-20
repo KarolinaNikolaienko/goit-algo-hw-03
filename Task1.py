@@ -27,9 +27,10 @@
 
 from pathlib import Path
 import shutil
+import os
 
 def copy_files(file: Path, destination) -> None:
-    dest_path = destination.joinpath(file.name.split('.')[1])
+    dest_path = destination.joinpath(os.path.splitext(file)[1].replace('.', ''))
     dest_path.mkdir(parents=True, exist_ok=True)
     shutil.copy(file, dest_path)
 
